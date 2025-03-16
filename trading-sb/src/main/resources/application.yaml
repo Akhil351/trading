@@ -1,0 +1,49 @@
+server:
+  port: 3510
+
+spring:
+  application:
+    name: trading
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/trading
+    username: postgres
+    password: Eshwar@351
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  main:
+    banner-mode: off
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 2100030701cseh@gmail.com  # Provide your email
+    password: ptrn djeb ziny cypn  # Provide your email password or use environment variables
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+stripe:
+  api:
+    key: your key
+
+razorpay:
+  api:
+    key: your api key
+    secret: your secret key
+
+
+gemini:
+  api:
+    key: your gemini api key
+
