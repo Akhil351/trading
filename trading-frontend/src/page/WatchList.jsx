@@ -42,7 +42,7 @@ export default function WatchList() {
               <TableCell>91244631212</TableCell>
               <TableCell>123391244631212</TableCell>
               <TableCell>-0.20009</TableCell>
-              <TableCell className="text-right">69249</TableCell>
+              <TableCell className="">69249</TableCell>
               <TableCell className="text-right">
                 <Button variant="ghost" onClick={()=>handleRemoveToWatchList(item.id)} size="icon" className="h-10 w-10">
                   <BookmarkFilledIcon className="w-6 h-6" />

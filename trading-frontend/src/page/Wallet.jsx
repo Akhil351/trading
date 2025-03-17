@@ -6,11 +6,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ReloadIcon } from "@radix-ui/react-icons";
+import { ReloadIcon, UpdateIcon } from "@radix-ui/react-icons";
 import {
   CopyIcon,
   DollarSign,
-  Shuffle,
   ShuffleIcon,
   UploadIcon,
   WalletIcon,
@@ -19,6 +18,7 @@ import React from "react";
 import TopupForm from "./TopupForm";
 import WithdrawalForm from "./WithdrawalForm";
 import TransferForm from "./TransferForm";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export default function Wallet() {
   return (
@@ -109,6 +109,45 @@ export default function Wallet() {
             </div>
           </CardContent>
         </Card>
+        <div className="py-5 pt-10">
+          <div className="flex gap-2 items-center pb-5">
+            <h1 className="text-2xl font-semibold">History</h1>
+            <UpdateIcon className="p-0 h-7 w-7 cursor-pointer hover:text-gray-400" />
+          </div>
+
+          {/* <Separator /> */}
+          <div className="space-y-5">
+            {[1, 1, 1, 1, 1, 1, 1, 1]?.map((item, index) => (
+              <div key={index}>
+                <Card className="lg:w-[50] px-5 py-2 flex flex-row justify-between items-center">
+                  <div className="flex items-center gap-5">
+                    <Avatar>
+                      <AvatarFallback>
+                        <ShuffleIcon />
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="space-y-1">
+                      <h1>Buy Asset</h1>
+                      <p className="text-sm text-gray-500">2024-06-04</p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="flex items-center">
+                      {/* <DollarSign className="h-4 w-4" /> */}
+                      <span
+                        className={`${
+                          20 > 0 ? "text-green-500" : "text-red-500"
+                        }`}
+                      >
+                        20 USD
+                      </span>
+                    </p>
+                  </div>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
