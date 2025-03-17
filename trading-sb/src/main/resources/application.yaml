@@ -39,8 +39,8 @@ stripe:
 
 razorpay:
   api:
-    key: your api key
-    secret: your secret key
+    key: rzp_test_2d2GYFrkLSzN9m
+    secret: nzNSPdasCKaKeVV4n6J46m6F
 
 
 gemini:
