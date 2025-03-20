@@ -21,7 +21,7 @@ export default function PaymentDetails() {
   return (
     <div className="px-20">
       <h1 className="text-3xl font-bold py-10">Payment Details</h1>
-      {true ? (
+      {false ? (
         <Card>
           <CardHeader>
             <CardTitle>Yes Bank</CardTitle>

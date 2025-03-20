@@ -11,24 +11,34 @@ import WatchList from "./page/WatchList";
 import Profile from "./page/Profile";
 import SearchCoin from "./page/SearchCoin";
 import NotFound from "./page/NotFound";
+import Auth from "./page/Auth";
 
 function App() {
+  const isAuthenticated = false; 
+
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/portfolio" element={<Portfolio />}></Route>
-        <Route path="/activity" element={<Activity />}></Route>
-        <Route path="/wallet" element={<Wallet />}></Route>
-        <Route path="/withdrawal" element={<Withdrawal />}></Route>
-        <Route path="/payment-details" element={<PaymentDetails />}></Route>
-        <Route path="/market/:id" element={<StockDetails />}></Route>
-        <Route path="/watchlist" element={<WatchList />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/search" element={<SearchCoin />}></Route>
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
+      {!isAuthenticated ? (
+        <Auth/>
+      ) : (
+        <div>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/activity" element={<Activity />} />
+            <Route path="/wallet" element={<Wallet />} />
+            <Route path="/withdrawal" element={<Withdrawal />} />
+            <Route path="/payment-details" element={<PaymentDetails />} />
+            <Route path="/market/:id" element={<StockDetails />} />
+            <Route path="/watchlist" element={<WatchList />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/search" element={<SearchCoin />} />
+            <Route path="/login" element={<Auth />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      )}
     </>
   );
 }
