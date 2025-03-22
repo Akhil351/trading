@@ -14,12 +14,12 @@ import NotFound from "./page/NotFound";
 import Auth from "./page/Auth";
 
 function App() {
-  const isAuthenticated = false; 
+  const isAuthenticated = false;
 
   return (
     <>
       {!isAuthenticated ? (
-        <Auth/>
+        <Auth />
       ) : (
         <div>
           <Navbar />
