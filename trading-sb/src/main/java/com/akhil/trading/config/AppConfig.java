@@ -1,6 +1,5 @@
 package com.akhil.trading.config;
 
-import com.akhil.trading.model.UserContext;
 import io.micrometer.common.lang.NonNull;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +33,6 @@ public class AppConfig {
     public WebClient webClient(WebClient.Builder webClientBuilder){
         return webClientBuilder.build();
     }
-
-
-    @Bean
-    public UserContext userContext(){
-        return new UserContext();
-    }
-
 
 
     @Bean
