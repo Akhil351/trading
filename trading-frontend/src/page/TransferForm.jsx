@@ -58,10 +58,12 @@ export default function TransferForm() {
         />
       </div>
 
-      <DialogClose className='w-full'>
-        <Button onClick={handleSubmit} className="w-full py-7">
-          Submit
-        </Button>
+      <DialogClose asChild>
+        <div>
+          <Button onClick={handleSubmit} className="w-full py-7">
+            Submit
+          </Button>
+        </div>
       </DialogClose>
     </div>
   );

@@ -34,7 +34,7 @@ export default function ForgotPassword() {
                 <FormControl>
                   <Input
                     className="border w-full border-gray-700 p-5"
-                    placeholder="enter your email..."
+                    placeholder="Enter your email"
                     {...field}
                   />
                 </FormControl>

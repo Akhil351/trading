@@ -52,10 +52,12 @@ export default function WithdrawalForm() {
           </div>
         </div>
       </div>
-      <DialogClose className="w-full">
-        <Button onClick={handleSubmit} className="w-full py-7 text-xl">
-          Withdraw
-        </Button>
+      <DialogClose asChild>
+        <div>
+          <Button onClick={handleSubmit} className="w-full py-7 text-xl">
+            Withdraw
+          </Button>
+        </div>
       </DialogClose>
     </div>
   );

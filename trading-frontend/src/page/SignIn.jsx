@@ -7,10 +7,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { login } from "@/state/Action";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const form = useForm({
     resolver: "",
     defaultValues: {
@@ -19,14 +24,14 @@ export default function SignIn() {
     },
   });
   const onSubmit = (data) => {
+    dispatch(login({data,navigate}));
     console.log(data);
   };
   return (
-    <div >
-         <h1 className="text-xl font-bold text-center pb-3">Login</h1>
+    <div>
+      <h1 className="text-xl font-bold text-center pb-3">Login</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
           <FormField
             control={form.control}
             name="email"

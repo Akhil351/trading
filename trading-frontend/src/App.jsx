@@ -12,34 +12,52 @@ import Profile from "./page/Profile";
 import SearchCoin from "./page/SearchCoin";
 import NotFound from "./page/NotFound";
 import Auth from "./page/Auth";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getUser } from "./state/Action";
 
 function App() {
-  const isAuthenticated = false;
+  const dispatch = useDispatch();
+  const { user, jwt } = useSelector((store) => store.authReducer);
+  const [loading, setLoading] = useState(true);
 
-  return (
-    <>
-      {!isAuthenticated ? (
-        <Auth />
-      ) : (
-        <div>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/activity" element={<Activity />} />
-            <Route path="/wallet" element={<Wallet />} />
-            <Route path="/withdrawal" element={<Withdrawal />} />
-            <Route path="/payment-details" element={<PaymentDetails />} />
-            <Route path="/market/:id" element={<StockDetails />} />
-            <Route path="/watchlist" element={<WatchList />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/search" element={<SearchCoin />} />
-            <Route path="/login" element={<Auth />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      )}
-    </>
+  useEffect(() => {
+    const token = jwt || localStorage.getItem("jwt");
+
+    if (token) {
+      dispatch(getUser(token)).finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, [dispatch, jwt]);
+
+  if (loading)
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <div className="w-12 h-12 border-4 border-orange-500 border-dashed rounded-full animate-spin" />
+      </div>
+    ); // You can customize this
+
+  return user ? (
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/activity" element={<Activity />} />
+        <Route path="/wallet" element={<Wallet />} />
+        <Route path="/withdrawal" element={<Withdrawal />} />
+        <Route path="/payment-details" element={<PaymentDetails />} />
+        <Route path="/market/:id" element={<StockDetails />} />
+        <Route path="/watchlist" element={<WatchList />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/search" element={<SearchCoin />} />
+        <Route path="/login" element={<Auth />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  ) : (
+    <Auth />
   );
 }
 

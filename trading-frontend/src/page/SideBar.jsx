@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
+import { logout } from "@/state/Action";
 import {
   ActivityLogIcon,
   DashboardIcon,
@@ -14,7 +15,9 @@ import {
   WalletIcon,
 } from "lucide-react";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 const menu = [
   { name: "Home", path: "/", icon: <HomeIcon className="h-6 w-6" /> },
   {
@@ -22,7 +25,6 @@ const menu = [
     path: "/portfolio",
     icon: <DashboardIcon className="h-6 w-6" />,
   },
-
   {
     name: "Watchlist",
     path: "/watchlist",
@@ -39,7 +41,6 @@ const menu = [
     path: "/payment-details",
     icon: <LandmarkIcon className="h-6 w-6" />,
   },
-
   {
     name: "Withdrawal",
     path: "/withdrawal",
@@ -50,25 +51,35 @@ const menu = [
     path: "/profile",
     icon: <PersonIcon className="h-6 w-6" />,
   },
-
   { name: "Logout", path: "/", icon: <ExitIcon className="h-6 w-6" /> },
 ];
+
 export default function SideBar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <div className="mt-10 space-y-5">
       {menu.map((item) => (
         <div key={item.name}>
-          <SheetClose className="w-full">
-            <Button
-              onClick={() => navigate(item.path)}
-              variant="outline"
-              className="flex items-center gap-5 py-6 w-full"
-            >
-              <span className="w-8">{item.icon}</span>
-              <p>{item.name}</p>
-            </Button>
-          </SheetClose>
+          {/* Remove SheetClose wrapping the button */}
+          <Button
+            onClick={() => {
+              navigate(item.path);
+              if (item.name === "Logout") {
+                handleLogout();
+              }
+            }}
+            variant="outline"
+            className="flex items-center gap-5 py-6 w-full"
+          >
+            <span className="w-8">{item.icon}</span>
+            <p>{item.name}</p>
+          </Button>
         </div>
       ))}
     </div>

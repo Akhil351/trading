@@ -7,10 +7,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { register } from "@/state/Action";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 export default function SignUp() {
+  const dispatch=useDispatch()
   const form = useForm({
     resolver: "",
     defaultValues: {
@@ -20,6 +23,7 @@ export default function SignUp() {
     },
   });
   const onSubmit = (data) => {
+    dispatch(register(data))
     console.log(data);
   };
   return (
@@ -35,7 +39,7 @@ export default function SignUp() {
                 <FormControl>
                   <Input
                     className="border w-full border-gray-700 p-5"
-                    placeholder="Akhileswar"
+                    placeholder="Enter your name"
                     {...field}
                   />
                 </FormControl>
@@ -52,7 +56,7 @@ export default function SignUp() {
                 <FormControl>
                   <Input
                     className="border w-full border-gray-700 p-5"
-                    placeholder="akhil.vathaluru@gmail.com"
+                    placeholder="Enter your email"
                     {...field}
                   />
                 </FormControl>
@@ -69,7 +73,7 @@ export default function SignUp() {
                 <FormControl>
                   <Input
                     className="border w-full border-gray-700 p-5"
-                    placeholder="your password"
+                    placeholder="Enter your password"
                     {...field}
                   />
                 </FormControl>

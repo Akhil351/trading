@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -52,7 +53,7 @@ export default function Wallet() {
             </div>
             <div className="flex gap-7 mt-5 ">
               <Dialog>
-                <DialogTrigger>
+                <DialogTrigger asChild>
                   <div
                     className="h-24 w-24 hover:text-gray-400 cursor-pointer flex
                    flex-col items-center justify-center rounded-md shadow-slate-800 shadow-md"
@@ -64,13 +65,16 @@ export default function Wallet() {
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Top Up Your Wallet</DialogTitle>
+                    <DialogDescription>
+                      Add money to your wallet to start trading
+                    </DialogDescription>
                   </DialogHeader>
                   <TopupForm />
                 </DialogContent>
               </Dialog>
 
               <Dialog>
-                <DialogTrigger>
+                <DialogTrigger asChild>
                   <div
                     className="h-24 w-24 hover:text-gray-400 cursor-pointer flex
                    flex-col items-center justify-center rounded-md shadow-slate-800 shadow-md"
@@ -82,13 +86,16 @@ export default function Wallet() {
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Request Withdrawal</DialogTitle>
+                    <DialogDescription>
+                      Withdraw your funds to your registered bank account
+                    </DialogDescription>
                   </DialogHeader>
                   <WithdrawalForm />
                 </DialogContent>
               </Dialog>
 
               <Dialog>
-                <DialogTrigger>
+                <DialogTrigger asChild>
                   <div
                     className="h-24 w-24 hover:text-gray-400 cursor-pointer flex
                    flex-col items-center justify-center rounded-md shadow-slate-800 shadow-md"
@@ -102,6 +109,9 @@ export default function Wallet() {
                     <DialogTitle className="text-center text-xl">
                       Transfer to other wallet
                     </DialogTitle>
+                    <DialogDescription>
+                      Transfer funds to another user's wallet
+                    </DialogDescription>
                   </DialogHeader>
                   <TransferForm />
                 </DialogContent>

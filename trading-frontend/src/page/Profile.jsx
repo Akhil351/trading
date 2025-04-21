@@ -5,14 +5,17 @@ import React from "react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import AccountVerificationForm from "./AccountVerificationForm";
+import { useSelector } from "react-redux";
 
 export default function Profile() {
+  const user = useSelector((state) => state.authReducer.user);
   const handleEnabledTwoStepVerification = () => {
     console.log("two step verification");
   };
@@ -28,11 +31,11 @@ export default function Profile() {
               <div className="space-y-7">
                 <div className="flex">
                   <p className="w-[9rem]">Email :</p>
-                  <p className="text-gray-500">akhil.vathaluru@gmail.com</p>
+                  <p className="text-gray-500">{user?.email}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Full Name :</p>
-                  <p className="text-gray-500">Akhileswar</p>
+                  <p className="text-gray-500">{user?.fullName}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Date of Birth :</p>
@@ -46,11 +49,11 @@ export default function Profile() {
               <div className="space-y-7">
                 <div className="flex">
                   <p className="w-[9rem]">Email :</p>
-                  <p className="text-gray-500">akhil.vathaluru@gmail.com</p>
+                  <p className="text-gray-500">{user?.email}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Full Name :</p>
-                  <p className="text-gray-500">Akhileswar</p>
+                  <p className="text-gray-500">{user?.fullName}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Date of Birth :</p>
@@ -82,12 +85,18 @@ export default function Profile() {
             <CardContent>
               <div>
                 <Dialog>
-                  <DialogTrigger>
-                    <Button>Enabled Two Step Verification</Button>
+                  <DialogTrigger asChild>
+                    <div>
+                      <Button>Enabled Two Step Verification</Button>
+                    </div>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
                       <DialogTitle>Verify your account</DialogTitle>
+                      <DialogDescription>
+                        Complete the verification process to enable two-step
+                        verification for your account
+                      </DialogDescription>
                     </DialogHeader>
                     <AccountVerificationForm
                       handleSubmit={handleEnabledTwoStepVerification}

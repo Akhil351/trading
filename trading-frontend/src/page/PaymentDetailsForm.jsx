@@ -118,10 +118,12 @@ export default function PaymentDetailsForm() {
               </FormItem>
             )}
           />
-          <DialogClose className="w-full">
-            <Button type="submit" className="w-full py-5">
-              Submit
-            </Button>
+          <DialogClose asChild>
+            <div>
+              <Button type="submit" className="w-full py-5">
+                Submit
+              </Button>
+            </div>
           </DialogClose>
         </form>
       </Form>

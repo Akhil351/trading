@@ -5,6 +5,7 @@ import { BookMarkedIcon, DotIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -48,12 +49,17 @@ export default function StockDetails() {
             )}
           </Button>
           <Dialog>
-            <DialogTrigger>
-              <Button size="lg">Tread</Button>
+            <DialogTrigger asChild>
+              <div>
+                <Button size="lg">Tread</Button>
+              </div>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>How Much Do you want to spend?</DialogTitle>
+                <DialogDescription>
+                  Enter the amount you want to invest in this asset
+                </DialogDescription>
               </DialogHeader>
               <TradingForm />
             </DialogContent>

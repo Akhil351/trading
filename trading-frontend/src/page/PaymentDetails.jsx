@@ -9,6 +9,7 @@ import {
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -40,12 +41,17 @@ export default function PaymentDetails() {
         </Card>
       ) : (
         <Dialog>
-          <DialogTrigger>
-            <Button className="py-6">Add payment details</Button>
+          <DialogTrigger asChild>
+            <div>
+              <Button className="py-6">Add payment details</Button>
+            </div>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Payment Details</DialogTitle>
+              <DialogDescription>
+                Add your payment details to enable withdrawals and transfers
+              </DialogDescription>
             </DialogHeader>
             <PaymentDetailsForm />
           </DialogContent>
