@@ -35,7 +35,7 @@ export default function SignIn() {
                 <FormControl>
                   <Input
                     className="border w-full border-gray-700 p-5"
-                    placeholder="akhil.vathaluru@gmail.com"
+                    placeholder="Enter your email"
                     {...field}
                   />
                 </FormControl>
@@ -52,7 +52,7 @@ export default function SignIn() {
                 <FormControl>
                   <Input
                     className="border w-full border-gray-700 p-5"
-                    placeholder="your password"
+                    placeholder="Enter your password"
                     {...field}
                   />
                 </FormControl>
