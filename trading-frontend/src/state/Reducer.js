@@ -9,16 +9,31 @@ import {
   LOGIN_SUCCESS,
   GET_USER_SUCCESS,
   LOGOUT,
+  FETCH_COIN_BY_ID_REQUEST,
+  FETCH_COIN_DETAILS_REQUEST,
+  FETCH_COIN_LIST_REQUEST,
+  SEARCH_COIN_REQUEST,
+  FETCH_TOP_50_COIN_REQUEST,
 } from "./ActionTypes";
 
-const initialState = {
+const userInitialState = {
   user: null,
   loading: false,
   error: null,
   jwt: null,
 };
+const coinInitialState = {
+  coinList: [],
+  top50: [],
+  searchCoinList: [],
+  marketChart: { data: [], loading: false },
+  coinById: null,
+  coinDetails: null,
+  loading: false,
+  error: null,
+};
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = userInitialState, action) => {
   switch (action.type) {
     case REGISTER_REQUEST:
     case LOGIN_REQUEST:
@@ -35,10 +50,21 @@ const authReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case LOGOUT:
-      return initialState
+      return userInitialState;
     default:
       return state;
   }
 };
 
-export default authReducer;
+const coinReducer = (state = coinInitialState, action) => {
+  switch (action.type) {
+    case FETCH_COIN_LIST_REQUEST:
+    case FETCH_COIN_BY_ID_REQUEST:
+    case FETCH_COIN_DETAILS_REQUEST:
+    case SEARCH_COIN_REQUEST:
+    case FETCH_TOP_50_COIN_REQUEST:
+      return { ...state, loading: true, error: null };
+  }
+};
+
+export { authReducer, coinReducer };
