@@ -1,4 +1,3 @@
-import { error } from "console";
 import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
