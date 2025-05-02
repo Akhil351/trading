@@ -5,6 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,6 +34,9 @@ export default function AccountVerificationForm() {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Enter OTP</DialogTitle>
+                <DialogDescription>
+                  Please enter the 6-digit OTP sent to your email
+                </DialogDescription>
               </DialogHeader>
               <div className="py-5 flex gap-10 justify-center items-center">
                 <InputOTP

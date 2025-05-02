@@ -1,16 +1,28 @@
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AssetTable from "./AssetTable";
 import StockChart from "./StockChart";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Cross1Icon, DotIcon } from "@radix-ui/react-icons";
 import { MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useDispatch, useSelector } from "react-redux";
+import { getCoinList, getTop50CoinList } from "@/state/Action";
 
 export default function Home() {
   const [category, setCategory] = useState("all");
   const [inputValue, setInputValue] = useState("");
   const [isBotRelease, setIsBotRelease] = useState(false);
+  const dispatch = useDispatch();
+  const coin = useSelector((store) => store.coin);
+
+  useEffect(()=>{
+     dispatch(getTop50CoinList())
+  },[category])
+  useEffect(() => {
+    dispatch(getCoinList(1));
+  }, []);
+
   const handleBotRelease = () => {
     setIsBotRelease(!isBotRelease);
   };
@@ -65,7 +77,7 @@ export default function Home() {
               Top Losers
             </Button>
           </div>
-          <AssetTable />
+          <AssetTable coin={category=="all"?coin.coinList:coin.top50} category={category} />
         </div>
         <div className="hidden lg:block lg:w-[50%] p-5">
           <StockChart />

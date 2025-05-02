@@ -18,18 +18,18 @@ import { getUser } from "./state/Action";
 
 function App() {
   const dispatch = useDispatch();
-  const { user, jwt } = useSelector((store) => store.authReducer);
+  const auth = useSelector((store) => store.auth);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = jwt || localStorage.getItem("jwt");
+    const token = auth.jwt || localStorage.getItem("jwt");
 
     if (token) {
       dispatch(getUser(token)).finally(() => setLoading(false));
     } else {
       setLoading(false);
     }
-  }, [dispatch, jwt]);
+  }, [dispatch, auth.jwt]);
 
   if (loading)
     return (
@@ -38,7 +38,7 @@ function App() {
       </div>
     ); // You can customize this
 
-  return user ? (
+  return auth.user ? (
     <div>
       <Navbar />
       <Routes>

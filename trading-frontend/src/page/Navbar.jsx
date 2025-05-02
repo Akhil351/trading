@@ -16,7 +16,7 @@ import SideBar from "./SideBar";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const { user } = useSelector((store) => store.authReducer);
+  const auth = useSelector((store) => store.auth);
 
   return (
     <div
@@ -26,7 +26,11 @@ export default function Navbar() {
       <div className="flex items-center gap-3">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="rounded-full h-11 w-11">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full h-11 w-11"
+            >
               <DragHandleHorizontalIcon className="h-7 w-7" />
             </Button>
           </SheetTrigger>
@@ -41,9 +45,7 @@ export default function Navbar() {
                     <AvatarImage src="https://cdn.pixabay.com/photo/2021/04/30/16/47/binance-logo-6219389_1280.png" />
                   </Avatar>
                   <div>
-                    <span className="font-bold text-orange-700">
-                      {"Akhil"}
-                    </span>
+                    <span className="font-bold text-orange-700">{"Akhil"}</span>
                     <span> Tread</span>
                   </div>
                 </div>
@@ -65,7 +67,7 @@ export default function Navbar() {
       <div>
         <Avatar>
           <AvatarFallback>
-            {user?.fullName?.[0]?.toUpperCase() || "?"}
+            {auth.user?.fullName?.[0]?.toUpperCase() || "?"}
           </AvatarFallback>
         </Avatar>
       </div>

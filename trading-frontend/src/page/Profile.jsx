@@ -15,7 +15,7 @@ import AccountVerificationForm from "./AccountVerificationForm";
 import { useSelector } from "react-redux";
 
 export default function Profile() {
-  const user = useSelector((state) => state.authReducer.user);
+  const auth = useSelector((state) => state.auth);
   const handleEnabledTwoStepVerification = () => {
     console.log("two step verification");
   };
@@ -31,11 +31,11 @@ export default function Profile() {
               <div className="space-y-7">
                 <div className="flex">
                   <p className="w-[9rem]">Email :</p>
-                  <p className="text-gray-500">{user?.email}</p>
+                  <p className="text-gray-500">{auth.user?.email}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Full Name :</p>
-                  <p className="text-gray-500">{user?.fullName}</p>
+                  <p className="text-gray-500">{auth.user?.fullName}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Date of Birth :</p>
@@ -49,11 +49,11 @@ export default function Profile() {
               <div className="space-y-7">
                 <div className="flex">
                   <p className="w-[9rem]">Email :</p>
-                  <p className="text-gray-500">{user?.email}</p>
+                  <p className="text-gray-500">{auth.user?.email}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Full Name :</p>
-                  <p className="text-gray-500">{user?.fullName}</p>
+                  <p className="text-gray-500">{auth.user?.fullName}</p>
                 </div>
                 <div className="flex">
                   <p className="w-[9rem]">Date of Birth :</p>

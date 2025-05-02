@@ -28,7 +28,6 @@ import {
   FETCH_COIN_DETAILS_FAILURE,
   FETCH_TOP_50_COIN_FAILURE,
 } from "./ActionTypes";
-import { data } from "react-router-dom";
 
 const userInitialState = {
   user: null,
